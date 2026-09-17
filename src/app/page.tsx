@@ -9,8 +9,6 @@ import { HomeCta } from "@/components/sections/home-cta";
 export default function Home() {
   return (
     <>
-      <Header />
-
       <main className="flex-1">
         <HomeHero />
         <HomeLoanProducts />
@@ -18,8 +16,6 @@ export default function Home() {
         <HomeTrust />
         <HomeCta />
       </main>
-
-      <Footer />
     </>
   );
 }
