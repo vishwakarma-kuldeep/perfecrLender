@@ -15,7 +15,7 @@ export type FooterSocialLink = {
 
 export const footerContent = {
     brand: {
-        logo: "/images/logo3.png",
+        logo: "/images/logo.png",
         logoAlt: "Perfect Lender",
         description:
             "Your trusted partner for flexible and reliable financial solutions.",

@@ -24,7 +24,7 @@ export function Header() {
           className="group flex shrink-0 items-center gap-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
           <Image
-            src="/images/logo3.png"
+            src="/images/logo.png"
             alt=""
             aria-hidden="true"
             width={48}
