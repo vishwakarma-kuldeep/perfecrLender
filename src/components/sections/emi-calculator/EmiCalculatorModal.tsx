@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { X } from "lucide-react";
 
@@ -12,6 +12,12 @@ type EmiCalculatorModalProps = {
 };
 
 export function EmiCalculatorModal({ open, onClose }: EmiCalculatorModalProps) {
+  const onCloseRef = useRef(onClose);
+
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
+
   useEffect(() => {
     if (!open) return;
 
@@ -20,7 +26,7 @@ export function EmiCalculatorModal({ open, onClose }: EmiCalculatorModalProps) {
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        onClose();
+        onCloseRef.current();
       }
     };
 
@@ -30,7 +36,7 @@ export function EmiCalculatorModal({ open, onClose }: EmiCalculatorModalProps) {
       document.body.style.overflow = originalOverflow;
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [open, onClose]);
+  }, [open]);
 
   return (
     <AnimatePresence>

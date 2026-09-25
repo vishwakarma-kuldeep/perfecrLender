@@ -103,7 +103,7 @@ export const homeContent = {
                 title: "Business Loan",
                 description:
                     "Fuel your business growth with tailored financial support.",
-                href: "/loans/business",
+                href: "/loans/business-loan",
                 icon: "business",
             },
             {
@@ -111,7 +111,7 @@ export const homeContent = {
                 title: "Home Loan",
                 description:
                     "Realize your dream of owning a home with our easy home loans.",
-                href: "/loans/home",
+                href: "/loans/home-loan",
                 icon: "home",
             },
             {
@@ -119,7 +119,7 @@ export const homeContent = {
                 title: "Mortgage Loan",
                 description:
                     "Unlock the value of your property with our competitive mortgage options.",
-                href: "/loans/mortgage",
+                href: "/loans/mortgage-loan",
                 icon: "mortgage",
             },
             {
@@ -127,7 +127,7 @@ export const homeContent = {
                 title: "Personal Loan",
                 description:
                     "Meet your personal financial needs with quick and flexible loans.",
-                href: "/loans/personal",
+                href: "/loans/personal-loan",
                 icon: "personal",
             },
             {
@@ -135,7 +135,7 @@ export const homeContent = {
                 title: "Vehicle Loan",
                 description:
                     "Drive home your dream car with our affordable vehicle loans.",
-                href: "/loans/vehicle",
+                href: "/loans/vehicle-loan",
                 icon: "vehicle",
             },
         ],

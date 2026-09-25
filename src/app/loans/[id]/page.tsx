@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound } from "next/navigation";
 
 import { loansContent } from "@/constants/loans";
@@ -19,6 +20,20 @@ type LoanDetailPageProps = {
   }>;
 };
 
+export function generateStaticParams() {
+  return loansContent.products.map((product) => ({ id: product.id }));
+}
+
+export async function generateMetadata({ params }: LoanDetailPageProps): Promise<Metadata> {
+  const { id } = await params;
+  const loan = loansContent.products.find((p) => p.id === id);
+  if (!loan) return {};
+  return {
+    title: loan.title,
+    description: loan.description,
+  };
+}
+
 export default async function LoanDetailPage({ params }: LoanDetailPageProps) {
   const { id } = await params;
 
@@ -29,7 +44,7 @@ export default async function LoanDetailPage({ params }: LoanDetailPageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground">
       <LoanDetailHero loan={loan} />
 
       <LoanDetailOverview loan={loan} />
@@ -49,6 +64,6 @@ export default async function LoanDetailPage({ params }: LoanDetailPageProps) {
       <LoanDetailFaq loan={loan} />
 
       <LoanDetailCta loan={loan} />
-    </main>
+    </div>
   );
 }

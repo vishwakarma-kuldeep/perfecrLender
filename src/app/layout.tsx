@@ -1,64 +1,3 @@
-// import type { Metadata } from "next";
-// import { Plus_Jakarta_Sans } from "next/font/google";
-// import "./globals.css";
-// import { ThemeProvider } from "@/components/providers/theme-provider";
-// import { WhatsAppButton } from "@/components/sections/whatsapp/WhatsAppButton";
-// import { EmiCalculatorTrigger } from "@/components/sections/emi-calculator/EmiCalculatorTrigger";
-// const plusJakartaSans = Plus_Jakarta_Sans({
-//   variable: "--font-plus-jakarta",
-//   subsets: ["latin"],
-//   display: "swap",
-// });
-// export const metadata: Metadata = {
-//   title: {
-//     default: "Perfect Lender | Your Trusted Financial Partner",
-//     template: "%s | Perfect Lender",
-//   },
-//   description:
-//     "Perfect Lender provides flexible and reliable financial solutions including business, home, mortgage, personal, and vehicle loans.",
-//   keywords: [
-//     "Perfect Lender",
-//     "loans",
-//     "business loan",
-//     "home loan",
-//     "mortgage loan",
-//     "personal loan",
-//     "vehicle loan",
-//     "financial solutions",
-//   ],
-//   applicationName: "Perfect Lender",
-//   authors: [{ name: "Perfect Lender" }],
-//   creator: "Perfect Lender",
-//   publisher: "Perfect Lender",
-//   robots: {
-//     index: true,
-//     follow: true,
-//   },
-// };
-
-// export default function RootLayout({
-//   children,
-// }: Readonly<{
-//   children: React.ReactNode;
-// }>) {
-//   return (
-//     <html lang="en" suppressHydrationWarning>
-//       <body className={`${plusJakartaSans.variable} antialiased`}>
-//         <ThemeProvider
-//           attribute="class"
-//           defaultTheme="system"
-//           enableSystem
-//           // disableTransitionOnChange
-//         >
-//           {children}
-//           <EmiCalculatorTrigger />
-//           <WhatsAppButton />
-//         </ThemeProvider>
-//       </body>
-//     </html>
-//   );
-// }
-
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 
@@ -118,13 +57,13 @@ export const metadata: Metadata = {
   /*
    * Browser / Mobile Icons
    *
-   * logo2.png should be inside:
-   * public/logo2.png
+   * icon.png should be inside:
+   * public/icon.png
    */
   icons: {
     icon: [
       {
-        url: "icon.png",
+        url: "/icon.png",
         type: "image/png",
       },
     ],
@@ -195,7 +134,7 @@ export default function RootLayout({
       <body className={`${plusJakartaSans.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
-          {children}
+          <main className="flex-1">{children}</main>
           <Footer />
           <EmiCalculatorTrigger />
 

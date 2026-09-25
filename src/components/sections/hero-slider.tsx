@@ -177,16 +177,24 @@ export function HeroSlider() {
 
   const activeSlide = heroSlides[activeIndex];
 
+  const goToSlide = (index: number | ((current: number) => number)) => {
+    setMediaFailed(false);
+    setActiveIndex(index);
+  };
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
+      const tag = (event.target as HTMLElement)?.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+
       if (event.key === "ArrowLeft") {
-        setActiveIndex((current) =>
+        goToSlide((current) =>
           current === 0 ? heroSlides.length - 1 : current - 1,
         );
       }
 
       if (event.key === "ArrowRight") {
-        setActiveIndex((current) =>
+        goToSlide((current) =>
           current === heroSlides.length - 1 ? 0 : current + 1,
         );
       }
@@ -198,9 +206,6 @@ export function HeroSlider() {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
-  useEffect(() => {
-    setMediaFailed(false);
-  }, [activeIndex, activeSlide?.id]);
 
   useEffect(() => {
     if (!heroSliderConfig.autoplay || isPaused || heroSlides.length <= 1) {
@@ -208,7 +213,7 @@ export function HeroSlider() {
     }
 
     const timer = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % heroSlides.length);
+      goToSlide((current) => (current + 1) % heroSlides.length);
     }, heroSliderConfig.interval);
 
     return () => {
@@ -217,13 +222,13 @@ export function HeroSlider() {
   }, [isPaused]);
 
   const goToPrevious = () => {
-    setActiveIndex(
+    goToSlide(
       (current) => (current - 1 + heroSlides.length) % heroSlides.length,
     );
   };
 
   const goToNext = () => {
-    setActiveIndex((current) => (current + 1) % heroSlides.length);
+    goToSlide((current) => (current + 1) % heroSlides.length);
   };
 
   if (!activeSlide) {
@@ -264,9 +269,7 @@ export function HeroSlider() {
 
           {!mediaFailed && (
             <div
-              className={`absolute inset-0 transition-opacity duration-200 ${
-                mediaFailed ? "opacity-0" : "opacity-100"
-              }`}
+              className={`absolute inset-0 transition-opacity duration-200 opacity-100`}
             >
               <HeroMedia
                 slide={activeSlide}
@@ -359,7 +362,7 @@ export function HeroSlider() {
             <button
               key={slide.id}
               type="button"
-              onClick={() => setActiveIndex(index)}
+              onClick={() => goToSlide(index)}
               aria-label={`Go to slide ${index + 1}`}
               aria-current={index === activeIndex}
               className="group flex h-6 items-center justify-center"

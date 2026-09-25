@@ -1,13 +1,54 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 
 import { contactContent } from "@/constants/contact";
+import { whatsappContent } from "@/constants/whatsapp";
 import { Card, CardContent } from "@/components/ui/card";
 
 export function LoanApplicationForm() {
   const { form } = contactContent;
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    loanType: "",
+    loanAmount: "",
+    message: "",
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const message = [
+      `Hello Perfect Lender,`,
+      ``,
+      `My name is ${formData.name}.`,
+      `Email: ${formData.email}`,
+      `Phone: ${formData.phone}`,
+      formData.loanType ? `Loan Type: ${formData.loanType}` : '',
+      formData.loanAmount ? `Loan Amount: ₹${formData.loanAmount}` : '',
+      formData.message ? `\nMessage: ${formData.message}` : '',
+      ``,
+      `I would like to discuss my loan requirement.`,
+    ].filter(Boolean).join('\n');
+  
+    window.open(
+      `https://wa.me/${whatsappContent.phoneNumber}?text=${encodeURIComponent(message)}`,
+      '_blank',
+      'noopener,noreferrer'
+    );
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   return (
     <section className="bg-muted/30 py-16 sm:py-20 lg:py-24">
@@ -35,7 +76,7 @@ export function LoanApplicationForm() {
                 </p>
               </div>
 
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid gap-6 sm:grid-cols-2">
                   <div>
                     <label
@@ -49,6 +90,8 @@ export function LoanApplicationForm() {
                       id="name"
                       name="name"
                       type="text"
+                      value={formData.name}
+                      onChange={handleChange}
                       placeholder={form.fields.name.placeholder}
                       className="h-12 w-full rounded-xl border border-border bg-background px-4 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/15"
                     />
@@ -66,6 +109,8 @@ export function LoanApplicationForm() {
                       id="email"
                       name="email"
                       type="email"
+                      value={formData.email}
+                      onChange={handleChange}
                       placeholder={form.fields.email.placeholder}
                       className="h-12 w-full rounded-xl border border-border bg-background px-4 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/15"
                     />
@@ -85,6 +130,8 @@ export function LoanApplicationForm() {
                       id="phone"
                       name="phone"
                       type="tel"
+                      value={formData.phone}
+                      onChange={handleChange}
                       placeholder={form.fields.phone.placeholder}
                       className="h-12 w-full rounded-xl border border-border bg-background px-4 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/15"
                     />
@@ -101,7 +148,8 @@ export function LoanApplicationForm() {
                     <select
                       id="loanType"
                       name="loanType"
-                      defaultValue=""
+                      value={formData.loanType}
+                      onChange={handleChange}
                       className="h-12 w-full rounded-xl border border-border bg-background px-4 text-sm text-foreground outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15"
                     >
                       <option value="" disabled>
@@ -130,6 +178,8 @@ export function LoanApplicationForm() {
                     name="loanAmount"
                     type="number"
                     min="0"
+                    value={formData.loanAmount}
+                    onChange={handleChange}
                     placeholder={form.fields.loanAmount.placeholder}
                     className="h-12 w-full rounded-xl border border-border bg-background px-4 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/15"
                   />
@@ -147,6 +197,8 @@ export function LoanApplicationForm() {
                     id="message"
                     name="message"
                     rows={5}
+                    value={formData.message}
+                    onChange={handleChange}
                     placeholder={form.fields.message.placeholder}
                     className="w-full resize-none rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/15"
                   />

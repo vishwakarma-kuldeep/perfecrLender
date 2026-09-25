@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import {
   Calculator,
@@ -122,7 +123,7 @@ export function EmiCalculator() {
 
   const interestPercentage =
     result.totalPayment > 0
-      ? (result.interestAmount / result.totalPayment) * 100
+      ? (result.totalInterest / result.totalPayment) * 100
       : 0;
 
   return (
@@ -420,7 +421,7 @@ export function EmiCalculator() {
 
                 <BreakdownItem
                   label={emiCalculatorContent.labels.interestAmount}
-                  value={formatCurrency(result.interestAmount)}
+                  value={formatCurrency(result.totalInterest)}
                   percentage={interestPercentage}
                 />
               </div>
@@ -510,13 +511,13 @@ export function EmiCalculator() {
 
             {/* CTA */}
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              <a
+              <Link
                 href="/contact"
                 className="group inline-flex items-center justify-center gap-2 rounded-2xl border border-border bg-card px-5 py-3.5 text-sm font-semibold text-foreground transition hover:border-primary/40"
               >
                 Discuss Your Loan
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </a>
+              </Link>
 
               <button
                 type="button"

@@ -1,27 +1,10 @@
 "use client";
 
 import { motion } from "motion/react";
-import {
-  ArrowRight,
-  BadgeCheck,
-  HandCoins,
-  ShieldCheck,
-  Sparkles,
-  Users,
-  Zap,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { aboutContent } from "@/constants/about";
 import { Card } from "@/components/ui/card";
-
-const iconMap = {
-  Users,
-  ShieldCheck,
-  BadgeCheck,
-  Sparkles,
-  Zap,
-  HandCoins,
-} as const;
 
 export function AboutValues() {
   const { mission, vision, values, approach } = aboutContent;

@@ -76,7 +76,7 @@ export function HomeWhyChooseUs() {
           className="mx-auto mt-12 grid max-w-6xl gap-5 sm:grid-cols-2 lg:grid-cols-4"
         >
           {whyChooseUs.items.map((item, index) => {
-            const Icon = icons[index];
+            const Icon = icons[index % icons.length];
 
             return (
               <motion.div

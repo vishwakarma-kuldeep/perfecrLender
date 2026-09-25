@@ -1,6 +1,5 @@
-"use client";
-
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 
 import { footerContent } from "@/constants/footer";
@@ -31,10 +30,12 @@ export function Footer() {
               aria-label="Perfect Lender home"
               className="group inline-flex items-center gap-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-secondary"
             >
-              <img
+              <Image
                 src={brand.logo}
                 alt=""
                 aria-hidden="true"
+                width={40}
+                height={40}
                 className="h-10 w-10 object-contain"
               />
 
@@ -97,7 +98,7 @@ export function Footer() {
                 <span className="break-all">{contact.email}</span>
 
                 <ArrowUpRight
-                  className="size-3.5 shrink-0 opacity-0 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  className="size-3.5 shrink-0 opacity-0 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100"
                   aria-hidden="true"
                 />
               </Link>

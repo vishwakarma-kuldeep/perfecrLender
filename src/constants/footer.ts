@@ -15,7 +15,7 @@ export type FooterSocialLink = {
 
 export const footerContent = {
     brand: {
-        logo: "/images/logo.png",
+        logo: "/images/logo1.png",
         logoAlt: "Perfect Lender",
         description:
             "Your trusted partner for flexible and reliable financial solutions.",
@@ -32,7 +32,7 @@ export const footerContent = {
 
     socialLinks: [
         {
-            label: "Instagram",
+            label: "instagram",
             href: "https://instagram.com/perfectlender01",
         },
     ] satisfies FooterSocialLink[],

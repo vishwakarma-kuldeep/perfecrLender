@@ -18,7 +18,6 @@ export type EmiCalculationResult = {
     totalInterest: number;
     totalPayment: number;
     principalAmount: number;
-    interestAmount: number;
     tenureMonths: number;
     annualInterestRate: number;
     amortization: AmortizationRow[];
@@ -29,13 +28,12 @@ export function calculateEmi({
     annualInterestRate,
     tenureMonths,
 }: EmiCalculationInput): EmiCalculationResult {
-    if (principal <= 0 || tenureMonths <= 0) {
+    if (principal <= 0 || tenureMonths <= 0 || annualInterestRate < 0) {
         return {
             emi: 0,
             totalInterest: 0,
             totalPayment: 0,
             principalAmount: 0,
-            interestAmount: 0,
             tenureMonths,
             annualInterestRate,
             amortization: [],
@@ -101,7 +99,6 @@ export function calculateEmi({
         totalInterest,
         totalPayment,
         principalAmount: principal,
-        interestAmount: totalInterest,
         tenureMonths,
         annualInterestRate,
         amortization,

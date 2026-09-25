@@ -91,7 +91,7 @@ export const heroSlides: HeroSlide[] = [
 
             cta: {
                 label: "Explore Business Loan",
-                href: "/loans/business",
+                href: "/loans/business-loan",
             },
         },
 
@@ -130,7 +130,7 @@ export const heroSlides: HeroSlide[] = [
 
             cta: {
                 label: "Explore Home Loan",
-                href: "/loans/home",
+                href: "/loans/home-loan",
             },
         },
 
@@ -169,7 +169,7 @@ export const heroSlides: HeroSlide[] = [
 
             cta: {
                 label: "Explore Mortgage Loan",
-                href: "/loans/mortgage",
+                href: "/loans/mortgage-loan",
             },
         },
 
@@ -208,7 +208,7 @@ export const heroSlides: HeroSlide[] = [
 
             cta: {
                 label: "Explore Personal Loan",
-                href: "/loans/personal",
+                href: "/loans/personal-loan",
             },
         },
 
@@ -247,7 +247,7 @@ export const heroSlides: HeroSlide[] = [
 
             cta: {
                 label: "Explore Vehicle Loan",
-                href: "/loans/vehicle",
+                href: "/loans/vehicle-loan",
             },
         },
 

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
-import { Calculator, X } from "lucide-react";
+import { motion } from "motion/react";
+import { Calculator } from "lucide-react";
 
 import { EmiCalculatorModal } from "./EmiCalculatorModal";
 

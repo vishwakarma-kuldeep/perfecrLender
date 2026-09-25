@@ -87,7 +87,7 @@ export function HomeLoanProducts() {
           variants={containerVariants}
           className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {loanOfferings.items.map((loan, index) => {
+          {loanOfferings.items.map((loan) => {
             const Icon = iconMap[loan.icon];
 
             return (
