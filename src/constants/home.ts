@@ -132,9 +132,9 @@ export const homeContent = {
             },
             {
                 id: "vehicle-loan",
-                title: "Vehicle Loan",
+                title: "Auto Loan",
                 description:
-                    "Drive home your dream car with our affordable vehicle loans.",
+                    "Explore financing for eligible car and vehicle purchases.",
                 href: "/loans/vehicle-loan",
                 icon: "vehicle",
             },

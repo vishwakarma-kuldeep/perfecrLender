@@ -30,11 +30,11 @@ export const contactContent = {
                 label: "Loan Type",
                 placeholder: "Select loan type",
                 options: [
+                    "Personal Loan",
                     "Business Loan",
                     "Home Loan",
                     "Mortgage Loan",
-                    "Personal Loan",
-                    "Vehicle Loan",
+                    "Auto Loan",
                 ],
             },
             loanAmount: {
@@ -90,4 +90,3 @@ export const contactContent = {
         mapButtonLabel: "Get Directions",
     },
 } as const;
-

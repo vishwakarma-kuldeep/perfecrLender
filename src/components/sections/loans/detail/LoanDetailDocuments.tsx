@@ -1,4 +1,4 @@
-import { FileCheck2, FileText } from "lucide-react";
+import { Check, FileText } from "lucide-react";
 
 import { loansContent } from "@/constants/loans";
 
@@ -19,11 +19,11 @@ export function LoanDetailDocuments({ loan }: LoanDetailDocumentsProps) {
             </div>
 
             <p className="mt-6 text-sm font-semibold uppercase tracking-wider text-primary">
-              Documents Required
+              Documents Checklist
             </p>
 
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Keep the relevant documents ready.
+              Documents checklist for your {loan.title.toLowerCase()}.
             </h2>
 
             <p className="mt-5 leading-7 text-muted-foreground">
@@ -39,7 +39,10 @@ export function LoanDetailDocuments({ loan }: LoanDetailDocumentsProps) {
                   key={document}
                   className="flex items-start gap-3 rounded-xl border border-border p-4"
                 >
-                  <FileCheck2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                  <Check
+                    aria-hidden="true"
+                    className="mt-0.5 h-5 w-5 shrink-0 text-primary"
+                  />
 
                   <span className="text-sm leading-6 text-foreground">
                     {document}

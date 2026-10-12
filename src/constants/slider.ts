@@ -238,7 +238,7 @@ export const heroSlides: HeroSlide[] = [
         content: {
             position: "bottom-right",
 
-            eyebrow: "Vehicle Loan",
+            eyebrow: "Auto Loan",
 
             title: "Drive Toward Your Next Goal",
 
@@ -246,7 +246,7 @@ export const heroSlides: HeroSlide[] = [
                 "Make your vehicle purchase easier with a flexible financing solution tailored to your needs.",
 
             cta: {
-                label: "Explore Vehicle Loan",
+                label: "Explore Auto Loan",
                 href: "/loans/vehicle-loan",
             },
         },

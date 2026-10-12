@@ -50,9 +50,9 @@ export const whatsappContent = {
         },
         {
             id: "vehicle-loan",
-            label: "Vehicle Loan",
+            label: "Auto Loan",
             message:
-                "Hello Perfect Lender, I am interested in a Vehicle Loan. Please share the available options and eligibility details.",
+                "Hello Perfect Lender, I am interested in an Auto Loan. Please share the available options and eligibility details.",
         },
         {
             id: "emi",

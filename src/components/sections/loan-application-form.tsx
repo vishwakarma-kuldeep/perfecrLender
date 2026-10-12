@@ -8,7 +8,15 @@ import { contactContent } from "@/constants/contact";
 import { whatsappContent } from "@/constants/whatsapp";
 import { Card, CardContent } from "@/components/ui/card";
 
-export function LoanApplicationForm() {
+type LoanApplicationFormProps = {
+  compact?: boolean;
+  idPrefix?: string;
+};
+
+export function LoanApplicationForm({
+  compact = false,
+  idPrefix = "contact",
+}: LoanApplicationFormProps) {
   const { form } = contactContent;
 
   const [formData, setFormData] = useState({
@@ -50,107 +58,134 @@ export function LoanApplicationForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const fieldId = (field: string) => `${idPrefix}-${field}`;
+
   return (
-    <section className="bg-muted/30 py-16 sm:py-20 lg:py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      className={
+        compact
+          ? "bg-transparent py-0"
+          : "bg-muted/30 py-16 sm:py-20 lg:py-24"
+      }
+    >
+      <div
+        className={
+          compact
+            ? "mx-auto w-full"
+            : "container mx-auto px-4 sm:px-6 lg:px-8"
+        }
+      >
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="mx-auto max-w-4xl"
+          className={compact ? "w-full" : "mx-auto max-w-4xl"}
         >
           <Card className="overflow-hidden shadow-lg">
-            <CardContent className="p-6 sm:p-8 lg:p-10">
-              <div className="mb-8 max-w-2xl">
+            <CardContent
+              className={compact ? "p-4 sm:p-6" : "p-6 sm:p-8 lg:p-10"}
+            >
+              <div className={`max-w-2xl ${compact ? "mb-4" : "mb-8"}`}>
                 <span className="text-sm font-medium text-primary">
                   {form.eyebrow}
                 </span>
 
-                <h2 className="mt-2 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+                <h2
+                  className={`mt-2 font-semibold tracking-tight text-foreground ${
+                    compact
+                      ? "text-lg sm:text-xl"
+                      : "text-2xl sm:text-3xl"
+                  }`}
+                >
                   {form.title}
                 </h2>
 
-                <p className="mt-3 text-sm leading-6 text-muted-foreground sm:text-base">
-                  {form.description}
-                </p>
+                {!compact && (
+                  <p className="mt-3 text-sm leading-6 text-muted-foreground sm:text-base">
+                    {form.description}
+                  </p>
+                )}
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid gap-6 sm:grid-cols-2">
+              <form
+                onSubmit={handleSubmit}
+                className={compact ? "space-y-3" : "space-y-6"}
+              >
+                <div className={`grid sm:grid-cols-2 ${compact ? "gap-3" : "gap-6"}`}>
                   <div>
                     <label
-                      htmlFor="name"
+                      htmlFor={fieldId("name")}
                       className="mb-2 block text-sm font-medium text-foreground"
                     >
                       {form.fields.name.label}
                     </label>
 
                     <input
-                      id="name"
+                      id={fieldId("name")}
                       name="name"
                       type="text"
                       value={formData.name}
                       onChange={handleChange}
                       placeholder={form.fields.name.placeholder}
-                      className="h-12 w-full rounded-xl border border-border bg-background px-4 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/15"
+                      className={`w-full rounded-xl border border-border bg-background px-4 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/15 ${compact ? "h-10" : "h-12"}`}
                     />
                   </div>
 
                   <div>
                     <label
-                      htmlFor="email"
+                      htmlFor={fieldId("email")}
                       className="mb-2 block text-sm font-medium text-foreground"
                     >
                       {form.fields.email.label}
                     </label>
 
                     <input
-                      id="email"
+                      id={fieldId("email")}
                       name="email"
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
                       placeholder={form.fields.email.placeholder}
-                      className="h-12 w-full rounded-xl border border-border bg-background px-4 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/15"
+                      className={`w-full rounded-xl border border-border bg-background px-4 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/15 ${compact ? "h-10" : "h-12"}`}
                     />
                   </div>
                 </div>
 
-                <div className="grid gap-6 sm:grid-cols-2">
+                <div className={`grid sm:grid-cols-2 ${compact ? "gap-3" : "gap-6"}`}>
                   <div>
                     <label
-                      htmlFor="phone"
+                      htmlFor={fieldId("phone")}
                       className="mb-2 block text-sm font-medium text-foreground"
                     >
                       {form.fields.phone.label}
                     </label>
 
                     <input
-                      id="phone"
+                      id={fieldId("phone")}
                       name="phone"
                       type="tel"
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder={form.fields.phone.placeholder}
-                      className="h-12 w-full rounded-xl border border-border bg-background px-4 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/15"
+                      className={`w-full rounded-xl border border-border bg-background px-4 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/15 ${compact ? "h-10" : "h-12"}`}
                     />
                   </div>
 
                   <div>
                     <label
-                      htmlFor="loanType"
+                      htmlFor={fieldId("loanType")}
                       className="mb-2 block text-sm font-medium text-foreground"
                     >
                       {form.fields.loanType.label}
                     </label>
 
                     <select
-                      id="loanType"
+                      id={fieldId("loanType")}
                       name="loanType"
                       value={formData.loanType}
                       onChange={handleChange}
-                      className="h-12 w-full rounded-xl border border-border bg-background px-4 text-sm text-foreground outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15"
+                      className={`w-full rounded-xl border border-border bg-background px-4 text-sm text-foreground outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15 ${compact ? "h-10" : "h-12"}`}
                     >
                       <option value="" disabled>
                         {form.fields.loanType.placeholder}
@@ -167,36 +202,36 @@ export function LoanApplicationForm() {
 
                 <div>
                   <label
-                    htmlFor="loanAmount"
+                    htmlFor={fieldId("loanAmount")}
                     className="mb-2 block text-sm font-medium text-foreground"
                   >
                     {form.fields.loanAmount.label}
                   </label>
 
                   <input
-                    id="loanAmount"
+                    id={fieldId("loanAmount")}
                     name="loanAmount"
                     type="number"
                     min="0"
                     value={formData.loanAmount}
                     onChange={handleChange}
                     placeholder={form.fields.loanAmount.placeholder}
-                    className="h-12 w-full rounded-xl border border-border bg-background px-4 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/15"
+                    className={`w-full rounded-xl border border-border bg-background px-4 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/15 ${compact ? "h-10" : "h-12"}`}
                   />
                 </div>
 
                 <div>
                   <label
-                    htmlFor="message"
+                    htmlFor={fieldId("message")}
                     className="mb-2 block text-sm font-medium text-foreground"
                   >
                     {form.fields.message.label}
                   </label>
 
                   <textarea
-                    id="message"
+                    id={fieldId("message")}
                     name="message"
-                    rows={5}
+                    rows={compact ? 2 : 5}
                     value={formData.message}
                     onChange={handleChange}
                     placeholder={form.fields.message.placeholder}
@@ -206,7 +241,7 @@ export function LoanApplicationForm() {
 
                 <button
                   type="submit"
-                  className="group inline-flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:w-auto"
+                  className={`group inline-flex h-12 cursor-pointer items-center justify-center gap-2 rounded-xl bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${compact ? "w-full" : "w-full sm:w-auto"}`}
                 >
                   {form.submitLabel}
 

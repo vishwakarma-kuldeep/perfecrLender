@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { navigationCta, navigationItems } from "@/constants/navigation";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { ContactPopup } from "@/components/sections/contact-popup";
 import { MobileNav } from "./mobile-nav";
 
 export function Header() {
@@ -87,6 +88,8 @@ export function Header() {
 
         {/* Actions */}
         <div className="flex items-center gap-2">
+          <ContactPopup />
+
           {/* Always visible — including mobile */}
           <ThemeToggle />
 

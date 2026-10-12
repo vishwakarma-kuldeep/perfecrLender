@@ -14,6 +14,10 @@ export const navigationItems: NavigationItem[] = [
         href: "/loans",
         children: [
             {
+                label: "Personal Loan",
+                href: "/loans/personal-loan",
+            },
+            {
                 label: "Business Loan",
                 href: "/loans/business-loan",
             },
@@ -26,11 +30,7 @@ export const navigationItems: NavigationItem[] = [
                 href: "/loans/mortgage-loan",
             },
             {
-                label: "Personal Loan",
-                href: "/loans/personal-loan",
-            },
-            {
-                label: "Vehicle Loan",
+                label: "Auto Loan",
                 href: "/loans/vehicle-loan",
             },
         ],

@@ -304,6 +304,7 @@ export const loansContent = {
                 "Handling unexpected financial requirements",
                 "Funding important personal needs",
                 "Supporting eligible life-event expenses",
+                "Exploring consolidation of eligible loan and credit card dues",
             ],
 
             faqs: [
@@ -318,6 +319,11 @@ export const loansContent = {
                         "Income and financial documents may be required as part of the eligibility and lending assessment.",
                 },
                 {
+                    question: "Can I consolidate loans and credit card dues?",
+                    answer:
+                        "You may be able to combine eligible loan balances and credit card dues into one loan without closing your credit cards. This depends on your profile, lender approval, and applicable terms.",
+                },
+                {
                     question: "Can I contact the team before applying?",
                     answer:
                         "Yes. You can contact Perfect Lender to discuss your financial requirement and understand the available options.",
@@ -327,7 +333,7 @@ export const loansContent = {
 
         {
             id: "vehicle-loan",
-            title: "Vehicle Loan",
+            title: "Auto Loan",
 
             href: "/loans/vehicle-loan",
             eyebrow: "For Your Vehicle",
@@ -380,9 +386,9 @@ export const loansContent = {
 
             faqs: [
                 {
-                    question: "What can a vehicle loan be used for?",
+                    question: "What can an auto loan be used for?",
                     answer:
-                        "A vehicle loan can provide financing for eligible vehicle purchases, subject to applicable lending terms and criteria.",
+                        "An auto loan can provide financing for eligible vehicle purchases, subject to applicable lending terms and criteria.",
                 },
                 {
                     question: "What documents may be required?",
@@ -527,7 +533,7 @@ export const loansContent = {
             {
                 question: "Which loan options are available?",
                 answer:
-                    "Perfect Lender offers Business Loans, Home Loans, Mortgage Loans, Personal Loans, and Vehicle Loans.",
+                    "Perfect Lender connects applicants with banks and NBFCs for Personal Loans, Business Loans, Home Loans, Mortgage Loans, and Auto Loans.",
             },
             {
                 question: "How do I choose the right loan?",

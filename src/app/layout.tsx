@@ -24,17 +24,17 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Perfect Lender provides flexible and reliable financial solutions including business, home, mortgage, personal, and vehicle loans.",
+    "Perfect Lender connects applicants with banks and NBFCs for personal, business, home, mortgage, and auto loans, without consulting fees charged by us.",
 
   keywords: [
     "Perfect Lender",
     "loans",
-    "loan provider",
+    "loan connection service",
     "business loan",
     "home loan",
     "mortgage loan",
     "personal loan",
-    "vehicle loan",
+    "auto loan",
     "financial solutions",
     "loans in Ahmedabad",
     "loans in Gujarat",
@@ -102,7 +102,7 @@ export const metadata: Metadata = {
     title: "Perfect Lender | Your Trusted Financial Partner",
 
     description:
-      "Explore business, home, mortgage, personal, and vehicle loan solutions with Perfect Lender.",
+      "Explore Personal, Business, Home, Mortgage, and Auto Loan options with Perfect Lender.",
 
     images: [
       {
@@ -118,7 +118,7 @@ export const metadata: Metadata = {
     title: "Perfect Lender | Your Trusted Financial Partner",
 
     description:
-      "Explore flexible financial solutions including business, home, mortgage, personal, and vehicle loans.",
+      "Explore personal, business, home, mortgage, and auto loan options with Perfect Lender.",
 
     images: ["/icon.png"],
   },

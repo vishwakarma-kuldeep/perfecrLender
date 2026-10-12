@@ -18,7 +18,7 @@ export const footerContent = {
         logo: "/images/logo1.png",
         logoAlt: "Perfect Lender",
         description:
-            "Your trusted partner for flexible and reliable financial solutions.",
+            "We connect you with suitable banks and NBFCs, with no consulting fees charged by us.",
     },
 
     contact: {
@@ -64,6 +64,10 @@ export const footerContent = {
             title: "Loan Products",
             links: [
                 {
+                    label: "Personal Loan",
+                    href: "/loans/personal-loan",
+                },
+                {
                     label: "Business Loan",
                     href: "/loans/business-loan",
                 },
@@ -76,11 +80,7 @@ export const footerContent = {
                     href: "/loans/mortgage-loan",
                 },
                 {
-                    label: "Personal Loan",
-                    href: "/loans/personal-loan",
-                },
-                {
-                    label: "Vehicle Loan",
+                    label: "Auto Loan",
                     href: "/loans/vehicle-loan",
                 },
             ],
