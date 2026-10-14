@@ -19,6 +19,8 @@ export type HeroSlide = {
         variant: "default" | "primary" | "dark" | "light";
     };
 
+    showContentOnImage?: boolean;
+
     overlay?: {
         enabled: boolean;
         variant?: "dark" | "light" | "primary";
@@ -62,19 +64,27 @@ export const heroSliderConfig = {
     showDots: true,
 } as const;
 
-export const heroSlides: HeroSlide[] = [
+const loanSlideOrder = [
+    "personal-loan",
+    "business-loan",
+    "home-loan",
+    "mortgage-loan",
+    "vehicle-loan",
+];
+
+const unsortedHeroSlides: HeroSlide[] = [
     {
         id: "business-loan",
         type: "image",
 
         media: {
-            src: "/images/hero/business-loan.webp",
-            mobileSrc: "/images/hero/business-loan-mobile.webp",
-            alt: "Business loan solutions",
+            src: "/images/webp/desk-2.webp",
+            mobileSrc: "/images/webp/mobi-2.webp",
+            alt: "Expert loan guidance at zero cost",
         },
 
         overlay: {
-            enabled: true,
+            enabled: false,
             variant: "dark",
             opacity: 0.45,
         },
@@ -82,16 +92,16 @@ export const heroSlides: HeroSlide[] = [
         content: {
             position: "center-left",
 
-            eyebrow: "Business Loan",
+            eyebrow: "Expert Loan Guidance",
 
-            title: "Fuel Your Business Growth",
+            title: "Expert loan guidance at zero cost",
 
             description:
-                "Get the financial support you need to take your business forward with flexible business loan solutions.",
+                "Get personalised guidance, compare options and find the right loan completely free.",
 
             cta: {
-                label: "Explore Business Loan",
-                href: "/loans/business-loan",
+                label: "Get Started Today",
+                href: "/contact",
             },
         },
 
@@ -107,13 +117,13 @@ export const heroSlides: HeroSlide[] = [
         type: "image",
 
         media: {
-            src: "/images/hero/home-loan.webp",
-            mobileSrc: "/images/hero/home-loan-mobile.webp",
-            alt: "Home loan solutions",
+            src: "/images/webp/desk-3.webp",
+            mobileSrc: "/images/webp/mobi-3.webp",
+            alt: "Explore better loan options from banks and NBFCs",
         },
 
         overlay: {
-            enabled: true,
+            enabled: false,
             variant: "dark",
             opacity: 0.4,
         },
@@ -121,16 +131,16 @@ export const heroSlides: HeroSlide[] = [
         content: {
             position: "bottom-left",
 
-            eyebrow: "Home Loan",
+            eyebrow: "Explore Better Options",
 
-            title: "Turn Your Dream Home Into Reality",
+            title: "Still paying high interest on your loan?",
 
             description:
-                "Choose a flexible home loan solution designed to help you move closer to owning your dream home.",
+                "Explore better loan options from banks and NBFCs with guidance tailored to your needs.",
 
             cta: {
-                label: "Explore Home Loan",
-                href: "/loans/home-loan",
+                label: "Explore Better Options",
+                href: "/loans",
             },
         },
 
@@ -146,13 +156,13 @@ export const heroSlides: HeroSlide[] = [
         type: "image",
 
         media: {
-            src: "/images/hero/mortgage-loan.webp",
-            mobileSrc: "/images/hero/mortgage-loan-mobile.webp",
-            alt: "Mortgage loan solutions",
+            src: "/images/webp/desk-4.webp",
+            mobileSrc: "/images/webp/mobi-4.webp",
+            alt: "A simpler way to find the right loan",
         },
 
         overlay: {
-            enabled: true,
+            enabled: false,
             variant: "dark",
             opacity: 0.45,
         },
@@ -160,16 +170,16 @@ export const heroSlides: HeroSlide[] = [
         content: {
             position: "center-right",
 
-            eyebrow: "Mortgage Loan",
+            eyebrow: "Clear Information & Support",
 
-            title: "Unlock the Value of Your Property",
+            title: "A simpler way to get the right loan",
 
             description:
-                "Access flexible mortgage financing designed around your financial requirements.",
+                "Find the right loan for you, with clear information and support at no cost.",
 
             cta: {
-                label: "Explore Mortgage Loan",
-                href: "/loans/mortgage-loan",
+                label: "Find the Right Loan for You Now",
+                href: "/contact",
             },
         },
 
@@ -185,13 +195,13 @@ export const heroSlides: HeroSlide[] = [
         type: "image",
 
         media: {
-            src: "/images/hero/personal-loan.webp",
-            mobileSrc: "/images/hero/personal-loan-mobile.webp",
-            alt: "Personal loan solutions",
+            src: "/images/webp/desk-1.webp",
+            mobileSrc: "/images/webp/mobi-1.webp",
+            alt: "One place for all your loan needs",
         },
 
         overlay: {
-            enabled: true,
+            enabled: false,
             variant: "dark",
             opacity: 0.4,
         },
@@ -199,16 +209,16 @@ export const heroSlides: HeroSlide[] = [
         content: {
             position: "top-right",
 
-            eyebrow: "Personal Loan",
+            eyebrow: "One Place for All Your Loan Needs",
 
-            title: "Financial Support for Your Personal Needs",
+            title: "One place for all your loan needs",
 
             description:
-                "Get access to flexible personal loan options designed to support the plans and priorities that matter to you.",
+                "Explore personal, home, business, mortgage, and auto loan options with guidance tailored to your goals.",
 
             cta: {
-                label: "Explore Personal Loan",
-                href: "/loans/personal-loan",
+                label: "Get Started Today",
+                href: "/contact",
             },
         },
 
@@ -224,13 +234,13 @@ export const heroSlides: HeroSlide[] = [
         type: "image",
 
         media: {
-            src: "/images/hero/vehicle-loan.webp",
-            mobileSrc: "/images/hero/vehicle-loan-mobile.webp",
-            alt: "Vehicle loan solutions",
+            src: "/images/webp/desk-5.webp",
+            mobileSrc: "/images/webp/mobi-5.webp",
+            alt: "Your loan journey just got easier",
         },
 
         overlay: {
-            enabled: true,
+            enabled: false,
             variant: "dark",
             opacity: 0.4,
         },
@@ -238,16 +248,16 @@ export const heroSlides: HeroSlide[] = [
         content: {
             position: "bottom-right",
 
-            eyebrow: "Auto Loan",
+            eyebrow: "Start Your Loan Journey",
 
-            title: "Drive Toward Your Next Goal",
+            title: "Your loan journey just got easier.",
 
             description:
-                "Make your vehicle purchase easier with a flexible financing solution tailored to your needs.",
+                "Get the right guidance, at no cost, and take the next step with confidence.",
 
             cta: {
-                label: "Explore Auto Loan",
-                href: "/loans/vehicle-loan",
+                label: "Start Your Loan Journey",
+                href: "/contact",
             },
         },
 
@@ -258,3 +268,8 @@ export const heroSlides: HeroSlide[] = [
         },
     },
 ];
+
+export const heroSlides = [...unsortedHeroSlides].sort(
+    (first, second) =>
+        loanSlideOrder.indexOf(first.id) - loanSlideOrder.indexOf(second.id),
+);

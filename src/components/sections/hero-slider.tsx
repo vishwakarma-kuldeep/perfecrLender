@@ -111,7 +111,7 @@ function HeroMedia({ slide, onError }: HeroMediaProps) {
   return (
     <picture className="absolute inset-0 block h-full w-full">
       {slide.media.mobileSrc && (
-        <source media="(max-width: 639px)" srcSet={slide.media.mobileSrc} />
+        <source media="(max-width: 1023px)" srcSet={slide.media.mobileSrc} />
       )}
 
       <Image
@@ -237,11 +237,16 @@ export function HeroSlider() {
 
   const theme = themeClasses[getTheme(activeSlide)];
   const position = activeSlide.content.position;
+  const showSlideContent =
+    mediaFailed ||
+    activeSlide.type === "text" ||
+    !activeSlide.media ||
+    activeSlide.showContentOnImage === true;
 
   return (
     <section
       aria-label="Featured financial solutions"
-      className="relative isolate min-h-[620px] overflow-hidden sm:min-h-[680px] lg:min-h-[720px]"
+      className="relative isolate aspect-3/4 w-full overflow-hidden lg:aspect-2078/757"
       onMouseEnter={() => {
         if (heroSliderConfig.pauseOnHover) {
           setIsPaused(true);
@@ -278,57 +283,70 @@ export function HeroSlider() {
             </div>
           )}
 
-          <HeroOverlay slide={activeSlide} mediaFailed={mediaFailed} />
-
-          <div className="absolute inset-0">
-            <div
-              className={`mx-auto flex h-full max-w-7xl flex-col px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28 ${positionClasses[position]}`}
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.5,
-                  delay: 0.08,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className={contentWidthClasses[position]}
+          {showSlideContent ? (
+            <div className="absolute inset-0 z-10">
+              <div
+                className={`mx-auto flex h-full max-w-7xl flex-col px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28 ${positionClasses[position]}`}
               >
-                {activeSlide.content.eyebrow && (
-                  <p
-                    className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.eyebrow}`}
-                  >
-                    {activeSlide.content.eyebrow}
-                  </p>
-                )}
-
-                <h1
-                  className={`mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl ${theme.title}`}
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: 0.08,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  className={contentWidthClasses[position]}
                 >
-                  {activeSlide.content.title}
-                </h1>
-
-                {activeSlide.content.description && (
-                  <p
-                    className={`mt-5 max-w-2xl text-base leading-7 sm:text-lg sm:leading-8 ${theme.description}`}
-                  >
-                    {activeSlide.content.description}
-                  </p>
-                )}
-
-                {activeSlide.content.cta && (
-                  <div className="mt-8">
-                    <Link
-                      href={activeSlide.content.cta.href}
-                      className="inline-flex h-12 items-center justify-center rounded-xl bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  {activeSlide.content.eyebrow && (
+                    <p
+                      className={`text-sm font-semibold uppercase tracking-[0.2em] ${theme.eyebrow}`}
                     >
-                      {activeSlide.content.cta.label}
-                    </Link>
-                  </div>
-                )}
-              </motion.div>
+                      {activeSlide.content.eyebrow}
+                    </p>
+                  )}
+
+                  <h1
+                    className={`mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl ${theme.title}`}
+                  >
+                    {activeSlide.content.title}
+                  </h1>
+
+                  {activeSlide.content.description && (
+                    <p
+                      className={`mt-5 max-w-2xl text-base leading-7 sm:text-lg sm:leading-8 ${theme.description}`}
+                    >
+                      {activeSlide.content.description}
+                    </p>
+                  )}
+
+                  {activeSlide.content.cta && (
+                    <div className="mt-8">
+                      <Link
+                        href={activeSlide.content.cta.href}
+                        className="inline-flex h-12 items-center justify-center rounded-xl bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                      >
+                        {activeSlide.content.cta.label}
+                      </Link>
+                    </div>
+                  )}
+                </motion.div>
+              </div>
             </div>
-          </div>
+          ) : activeSlide.content.cta ? (
+            <Link
+              href={activeSlide.content.cta.href}
+              aria-label={activeSlide.content.cta.label}
+              className="absolute inset-0 z-10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-primary"
+            >
+              <span className="sr-only">
+                <h1>{activeSlide.content.title}</h1>
+                {activeSlide.content.description}
+              </span>
+            </Link>
+          ) : null}
+
+          <HeroOverlay slide={activeSlide} mediaFailed={mediaFailed} />
         </motion.div>
       </AnimatePresence>
 

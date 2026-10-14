@@ -9,6 +9,17 @@ import { Card } from "@/components/ui/card";
 
 export function LoanProducts() {
   const { intro, products } = loansContent;
+  const loanOrder = [
+    "personal-loan",
+    "business-loan",
+    "home-loan",
+    "mortgage-loan",
+    "vehicle-loan",
+  ];
+  const orderedProducts = [...products].sort(
+    (first, second) =>
+      loanOrder.indexOf(first.id) - loanOrder.indexOf(second.id),
+  );
 
   return (
     <section
@@ -39,7 +50,7 @@ export function LoanProducts() {
 
         {/* Products */}
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-6">
-          {products.map((product, index) => {
+          {orderedProducts.map((product, index) => {
             const Icon = product.icon;
 
             /*

@@ -25,6 +25,12 @@ export const whatsappContent = {
                 "Hello Perfect Lender, I would like to know more about your loan options.",
         },
         {
+            id: "personal-loan",
+            label: "Personal Loan",
+            message:
+                "Hello Perfect Lender, I am interested in a Personal Loan. Please share the available options and eligibility details.",
+        },
+        {
             id: "business-loan",
             label: "Business Loan",
             message:
@@ -41,12 +47,6 @@ export const whatsappContent = {
             label: "Mortgage Loan",
             message:
                 "Hello Perfect Lender, I am interested in a Mortgage Loan. Please share the available options and eligibility details.",
-        },
-        {
-            id: "personal-loan",
-            label: "Personal Loan",
-            message:
-                "Hello Perfect Lender, I am interested in a Personal Loan. Please share the available options and eligibility details.",
         },
         {
             id: "vehicle-loan",

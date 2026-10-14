@@ -1,8 +1,8 @@
 export type LoanType =
+    | "personal-loan"
     | "business-loan"
     | "home-loan"
     | "mortgage-loan"
-    | "personal-loan"
     | "vehicle-loan";
 
 export type LoanTypeConfig = {
@@ -27,6 +27,20 @@ export const emiCalculatorContent = {
         "Estimate your monthly EMI, total interest, and total repayment based on your loan amount, interest rate, and tenure.",
 
     loanTypes: [
+        {
+            id: "personal-loan",
+            label: "Personal Loan",
+            description: "For eligible personal financial requirements.",
+            defaultAmount: 500000,
+            minAmount: 50000,
+            maxAmount: 5000000,
+            defaultRate: 12,
+            minRate: 1,
+            maxRate: 30,
+            defaultTenure: 60,
+            minTenure: 6,
+            maxTenure: 120,
+        },
         {
             id: "business-loan",
             label: "Business Loan",
@@ -67,20 +81,6 @@ export const emiCalculatorContent = {
             maxRate: 25,
             defaultTenure: 120,
             minTenure: 12,
-            maxTenure: 120,
-        },
-        {
-            id: "personal-loan",
-            label: "Personal Loan",
-            description: "For eligible personal financial requirements.",
-            defaultAmount: 500000,
-            minAmount: 50000,
-            maxAmount: 5000000,
-            defaultRate: 12,
-            minRate: 1,
-            maxRate: 30,
-            defaultTenure: 60,
-            minTenure: 6,
             maxTenure: 120,
         },
         {

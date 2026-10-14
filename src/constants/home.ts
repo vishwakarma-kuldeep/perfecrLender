@@ -99,6 +99,14 @@ export const homeContent = {
 
         items: [
             {
+                id: "personal-loan",
+                title: "Personal Loan",
+                description:
+                    "Meet your personal financial needs with quick and flexible loans.",
+                href: "/loans/personal-loan",
+                icon: "personal",
+            },
+            {
                 id: "business-loan",
                 title: "Business Loan",
                 description:
@@ -121,14 +129,6 @@ export const homeContent = {
                     "Unlock the value of your property with our competitive mortgage options.",
                 href: "/loans/mortgage-loan",
                 icon: "mortgage",
-            },
-            {
-                id: "personal-loan",
-                title: "Personal Loan",
-                description:
-                    "Meet your personal financial needs with quick and flexible loans.",
-                href: "/loans/personal-loan",
-                icon: "personal",
             },
             {
                 id: "vehicle-loan",

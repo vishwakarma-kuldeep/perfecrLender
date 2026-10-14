@@ -11,7 +11,7 @@ export function Footer() {
     <footer className="border-t border-border bg-secondary text-secondary-foreground">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
         {/* Main Footer */}
-        <div className="grid gap-12 lg:grid-cols-[1.25fr_0.8fr_1fr_1fr] lg:gap-10">
+        <div className="grid gap-10 md:grid-cols-2 md:gap-x-10 md:gap-y-12 lg:grid-cols-[1.25fr_0.8fr_1fr_1fr] lg:gap-10">
           {/* Brand + Contact */}
           <div className="max-w-md">
             {/* <Link
@@ -121,9 +121,30 @@ export function Footer() {
                       aria-label={social.label}
                       className="flex size-10 items-center justify-center rounded-xl border border-secondary-foreground/10 bg-secondary-foreground/5 text-secondary-foreground/70 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:bg-primary hover:text-primary-foreground"
                     >
-                      <span className="text-xs font-semibold">
-                        {social.label.slice(0, 1)}
-                      </span>
+                      <svg
+                        aria-hidden="true"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        className="size-4.5"
+                      >
+                        <rect
+                          x="3"
+                          y="3"
+                          width="18"
+                          height="18"
+                          rx="5"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                        />
+                        <circle
+                          cx="12"
+                          cy="12"
+                          r="4"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                        />
+                        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+                      </svg>
                     </Link>
                   ))}
                 </div>
